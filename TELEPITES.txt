@@ -1,0 +1,39 @@
+BLACKSECTOR HU – EGYIRÁNYÚ TÜSKÉS ÚTZÁR
+
+1. Másold a teljes BS_SPIKE mappát a FiveM szerver resources könyvtárába.
+2. A server.cfg-be írd be: ensure BS_SPIKE
+3. CodeWalkerben csak az alábbi alapmodellek valamelyikét helyezd el:
+   bs_spike_100_base, bs_spike_200_base, bs_spike_300_base,
+   bs_spike_400_base, bs_spike_500_base, bs_spike_600_base,
+   bs_spike_700_base, bs_spike_800_base, bs_spike_900_base,
+   bs_spike_1000_base.
+   A _move, _red és _green modelleket NE helyezd el kézzel.
+   Ezeket a script automatikusan hozza létre a betöltött alapmodellhez.
+4. Indítsd el a resource-ot és a saját YMAP resource-odat.
+
+MŰKÖDÉS
+A modell helyi +Y oldala zöld, a -Y oldala piros.
+A zöld oldal felől közeledő jármű lecsukja a tüskéket.
+A piros oldal felől a felemelt tüskéken áthaladó kerék a FiveM
+SetVehicleTyreBurst natív függvényével kap defektet.
+A defektet a jármű hálózati tulajdonosa kezeli, nem küldünk más
+játékos járművére kárt okozó hálózati eseményt.
+A defektálló abroncsok védelmét nem írjuk felül. A script a motorhoz
+és a karosszéria életerejéhez nem nyúl.
+Az útzár nyitott állapotban fizikailag átjárható mindkét oldalról.
+A helyben létrehozott alkatrészeket a kliensek a környezetükben
+látható járművek alapján vezérlik, így átmeneti eltérés lehetséges.
+Nincs kötelező ESX, QBCore, target, adatbázis vagy szerveroldali script.
+
+TESZTELÉS
+- Próbáld ki mindkét irányból, normál autóval és motorral.
+- Próbáld ki úgy is, hogy az autó csak az egyik oldali kerekével érinti az útzárat.
+- Ellenőrizd, hogy a piros fény villog, a zöld folyamatosan látszik.
+- Ellenőrizd az animációt elforgatott propnál és több klienssel is.
+- Ha nem találja az alapmodellt, ellenőrizd, hogy a YTYP és a saját YMAP
+  resource betöltődött-e. Config.Debug = true bekapcsolja a konzolnaplót.
+- A Config.MovingCollision = false kikapcsolja a mozgó elem fizikai
+  ütközését, ha a játékban a collision felakasztja a járművet.
+
+A 40 YDR, 1 YTD és 1 YTYP az eredeti feltöltésből változatlanul származik.
+A Lua szintaxis ellenőrizve; élő FiveM teszt szükséges.
